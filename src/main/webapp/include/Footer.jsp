@@ -1,5 +1,16 @@
 
 <!-- Footer Section Begin -->
+<div style="position: fixed; top: 87%;  right: 3%;">
+	<button onclick="scrollToTop()" class="primary">OnTop</button>
+</div>
+<script>
+	function scrollToTop() {
+		console.log("scrol")
+		document.body.scrollTop = 0;
+		document.documentElement.scrollTop = 0;
+	}
+</script>
+
 <footer class="footer">
 	<div class="" style="margin: auto 180px">
 		<div class="row">
@@ -16,7 +27,7 @@
 			<div class="col-lg-2 offset-lg-1 col-md-3 col-sm-6">
 				<div class="footer__widget">
 					<ul>
-					<h6>Shopping</h6>
+						<h6>Shopping</h6>
 						<li><a href="#">Clothing Store</a></li>
 						<li><a href="#">Trending Shoes</a></li>
 						<li><a href="#">Accessories</a></li>
@@ -27,7 +38,7 @@
 			<div class="col-lg-2 col-md-3 col-sm-6">
 				<div class="footer__widget">
 					<ul>
-					<h6>Shopping</h6>
+						<h6>Shopping</h6>
 						<li><a href="#">Contact Us</a></li>
 						<li><a href="#">Payment Methods</a></li>
 						<li><a href="#">Delivary</a></li>

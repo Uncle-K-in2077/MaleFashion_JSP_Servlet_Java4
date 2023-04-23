@@ -34,4 +34,30 @@ public class UserDAO {
 		}
 	}
 
+	public static User findById(int id) {
+		Transaction transaction = null;
+		User user = null;
+		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+
+			transaction = session.beginTransaction();
+
+			user = session.load(User.class, id);
+			System.out.println(user);
+			transaction.commit();
+			session.close();
+		} catch (Exception e) {
+			if (transaction != null) {
+				transaction.rollback();
+			}
+			e.printStackTrace();
+		}
+		return user;
+	}
+
+//	Keeping here!!!
+
+	public static void main(String[] args) {
+		User user = findById(1);
+		user.getLikeses().forEach(item -> System.out.println(item.getVideos().getTitle()));
+	}
 }

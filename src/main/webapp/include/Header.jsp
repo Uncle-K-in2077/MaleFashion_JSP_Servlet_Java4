@@ -35,6 +35,8 @@
     <% HttpSession session2 = request.getSession();
 	String username = (String) session2.getAttribute("username"); 
 	Boolean role = (Boolean) session2.getAttribute("role");
+	Integer idUser = (Integer) session2.getAttribute("idUser");
+	
 	if(username == null){
 		username = "";
 	}else{
@@ -97,7 +99,7 @@
                             <li><a href="">Your Account</a></li>
                             <li><a href="">Your Videos</a>
                                 <ul class="dropdown" style="background-color: rgb(230,153,136, 0.2);">
-                                    <li style="background: rgb(230,153,136);"><a href="">Liked Videos</a></li>
+                                    <li style="background: rgb(230,153,136);"><a href="./LikedByUser?id=${ idUser }">Liked Videos</a></li>
                                     <li style="background: rgb(230,153,136);"><a href="">Shared Videos</a></li>
                                 </ul>
                             </li>

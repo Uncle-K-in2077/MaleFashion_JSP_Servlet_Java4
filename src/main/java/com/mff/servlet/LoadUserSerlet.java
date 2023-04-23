@@ -34,6 +34,7 @@ public class LoadUserSerlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/json; charset=UTF-8");
+
 		Session ss = HibernateUtil.getSessionFactory().openSession();
 		ss.beginTransaction();
 

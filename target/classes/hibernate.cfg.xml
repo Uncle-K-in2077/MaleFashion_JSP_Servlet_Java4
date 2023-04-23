@@ -13,6 +13,7 @@
         <property name="hibernate.search.autoregister_listeners">true</property>
         <property name="hibernate.validator.apply_to_ddl">false</property>
         <mapping class="com.mff.entities.Videos" />
+        <mapping class="com.mff.entities.Likes" />
         <mapping class="com.mff.entities.User" />
     </session-factory>
 </hibernate-configuration>

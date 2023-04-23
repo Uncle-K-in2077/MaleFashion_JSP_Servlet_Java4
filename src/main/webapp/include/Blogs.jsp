@@ -33,21 +33,24 @@
 				<c:set var="nullValue" value=""></c:set>
 			</c:if>
 
-				<%--  
+			<%--  
 				<input type="text" name="keyword">
 				<button type="submit" class=" btn-primary m-1">Search</button>--%>
 
 			<form action="home.jsp" method="get">
-				
-			 <div  class="input-group mb-3 mt-3">
-                <input name="keyword" class="form-control border-end-0 border" type="search" placeholder="search" id="example-search-input">
-                <span class="input-group-append">
-                    <button class="btn btn-outline-secondary bg-white border-start-0 border-bottom-0 border ms-n5" type="submit">
-                        <i class="fa fa-search"></i>
-                    </button>
-                </span>
-            </div>
-       
+
+				<div class="input-group mb-3 mt-3">
+					<input name="keyword" class="form-control border-end-0 border"
+						type="search" placeholder="search" id="example-search-input">
+					<span class="input-group-append">
+						<button
+							class="btn btn-outline-secondary bg-white border-start-0 border-bottom-0 border ms-n5"
+							type="submit">
+							<i class="fa fa-search"></i>
+						</button>
+					</span>
+				</div>
+
 			</form>
 
 			<%-- Tim Kiem End --%>
@@ -68,10 +71,12 @@
 								<h5>${videos.title }</h5>
 								<a href="./videos/detail?id=${videos.id }"
 									style="text-decoration: none">See More</a>
-								<button
-									style="margin-left: 140px; border: none; background-color: white;">
-									<img src="img/icon/heart.png" alt="">
-								</button>
+								<a href="./addlike?idvd=${videos.id }" style="text-decoration: none">
+									<button
+										style="margin-left: 140px; border: none; background-color: white;">
+										<img src="img/icon/heart.png" alt="">
+									</button>
+								</a>
 								<button style="border: none; background-color: white;">
 									<img src="img/icon/compare.png" alt="">
 								</button>
@@ -80,7 +85,7 @@
 					</div>
 				</c:forEach>
 			</c:if>
-			
+
 			<hr>
 
 			<c:set var="limit" value="3"></c:set>
@@ -92,12 +97,12 @@
 					<c:set var="page" value="${(param.page - 1)*3}"></c:set>
 					<%-- Reload on every single page --%>
 					<script type="text/javascript">
-					const myTimeout = setTimeout(letScroll, 1);
-				</script>
+						const myTimeout = setTimeout(letScroll, 1);
+					</script>
 				</c:otherwise>
 			</c:choose>
-			
-					<%-- oanh khung --%>
+
+			<%-- oanh khung --%>
 			<c:forEach var="videos"
 				items="${f:getVideosPagination(page, limit) }">
 				<div class="col-lg-4 col-md-6 col-sm-6">
@@ -111,10 +116,14 @@
 							<h5>${videos.title }</h5>
 							<a href="./videos/detail?id=${videos.id }"
 								style="text-decoration: none">See More</a>
+							
+							<a href="./addlike?idvd=${videos.id }" style="text-decoration: none">
 							<button
 								style="margin-left: 140px; border: none; background-color: white;">
 								<img src="img/icon/heart.png" alt="">
 							</button>
+							</a>
+							
 							<button style="border: none; background-color: white;">
 								<img src="img/icon/compare.png" alt="">
 							</button>
@@ -137,18 +146,21 @@
 
 			<nav aria-label="Page navigation example">
 				<ul class="pagination" style="margin: auto 45% auto 45%">
-					<li class="page-item"><a class="page-link" href="#" style="text-decoration: none; color: black;"
-						aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+					<li class="page-item"><a class="page-link" href="#"
+						style="text-decoration: none; color: black;" aria-label="Previous">
+							<span aria-hidden="true">&laquo;</span>
 					</a></li>
-					
+
 					<c:forEach var="i" begin="1" end="${totalPages}" step="1">
-					
-						<li class="page-item"><a class="page-link" style="text-decoration: none; color: black;"
+
+						<li class="page-item"><a class="page-link"
+							style="text-decoration: none; color: black;"
 							href="home.jsp?page=${i }">${i }</a></li>
 					</c:forEach>
-					
-					<li class="page-item"><a class="page-link" href="#" style="text-decoration: none; color: black;"
-						aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+
+					<li class="page-item"><a class="page-link" href="#"
+						style="text-decoration: none; color: black;" aria-label="Next">
+							<span aria-hidden="true">&raquo;</span>
 					</a></li>
 				</ul>
 			</nav>

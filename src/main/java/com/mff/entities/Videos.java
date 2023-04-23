@@ -1,12 +1,15 @@
 package com.mff.entities;
-// Generated Apr 22, 2023, 3:20:05 PM by Hibernate Tools 4.3.6.Final
+// Generated Apr 22, 2023, 4:53:09 PM by Hibernate Tools 4.3.6.Final
 
-import static javax.persistence.GenerationType.IDENTITY;
-
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -23,17 +26,20 @@ public class Videos implements java.io.Serializable {
 	private String descrip;
 	private Integer views;
 	private Boolean status;
+	private Set<Likes> likeses = new HashSet<Likes>(0);
 
 	public Videos() {
 	}
 
-	public Videos(String title, String thumbnail, String linkVideo, String descrip, Integer views, Boolean status) {
+	public Videos(String title, String thumbnail, String linkVideo, String descrip, Integer views, Boolean status,
+			Set<Likes> likeses) {
 		this.title = title;
 		this.thumbnail = thumbnail;
 		this.linkVideo = linkVideo;
 		this.descrip = descrip;
 		this.views = views;
 		this.status = status;
+		this.likeses = likeses;
 	}
 
 	@Id
@@ -100,6 +106,15 @@ public class Videos implements java.io.Serializable {
 
 	public void setStatus(Boolean status) {
 		this.status = status;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "videos")
+	public Set<Likes> getLikeses() {
+		return this.likeses;
+	}
+
+	public void setLikeses(Set<Likes> likeses) {
+		this.likeses = likeses;
 	}
 
 }
