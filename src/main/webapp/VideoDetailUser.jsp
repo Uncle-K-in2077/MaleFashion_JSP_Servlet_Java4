@@ -39,62 +39,21 @@
 							<div class="ms-3" style="margin-top: 130px;">
 								<h5>${videos.title }</h5>
 								<p style="color: yellow;">
-									<a style="text-decoration: none; color: white" href="../videos">Back
+									<a style="text-decoration: none; color: white" href="../home.jsp">Back
 										<img
 										src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAATZJREFUSEvt1t1twjAQAOC7KkWc7UrdpGWDMknLBnQDNoAR0knKCGGDjoDU/PB2lQNBxoqduIpBCPJoWf5yl/NdEC704IVcuMNny/x1pbrMy1UCSTpSo6wtRcz8XBa7pZDjT0Tctu0JjrjIqxQB3pl5+4jJ1Mb3aPWNgK8MnAlJ0zY8CG7QJgKNPyQ4IaIfvWaixz3AmVRiYkfdG7bRGgL4koo+XKheR4AZKUr/BQ+NHl7If4NioJ1wLNQLx0SdcGw0FE6loplRwWsEfDErxFXBQQ3EEfVguPcex8Q7G0gsvBPW3ycG3guOgfeG23AG3ghJb830OQyJk2o3+7l1A8J+Oo5j0UKNiaXHYo270M6W6Xql4rdaCDVeuYZ8HXm+m8snWrjOCEp1WG78u+/wkNn0nnV7qf4DCAIKLuwoAPoAAAAASUVORK5CYII=" />
 									</a>
 								</p>
 							</div>
 						</div>
+						
+						
 						<%--2 --%>
 						<div class="p-4 text-black" style="background-color: #f8f9fa;">
-
-							<div class="colapseForm">
-								<p>
-									<button class="btn-dark"
-										style="padding: 5px; border: 1px solid: white; border-radius: 5px; width: 300px; margin-top: 20px"
-										type="button" data-bs-toggle="collapse"
-										data-bs-target="#collapseExample" aria-expanded="false"
-										aria-controls="collapseExample">Edit ❤</button>
-								</p>
-								<div class="collapse" id="collapseExample">
-									<div class=" container card card-body"
-										style="border: 2px solid; background-color: #212529; color: white">
-
-										<%-- Your input here --%>
-										<form action="../video/update?id=${videos.id }" method="post"
-											enctype="multipart/form-data">
-											<div class="mb-3" style="padding: 20px">
-
-												<label for="exampleFormControlInput1" class="form-label">Title
-													Video</label> <input name="title" type="text"
-													class="form-control mb-3" id="exampleFormControlInput1"
-													value="${videos.title }"> <label
-													for="exampleFormControlInput1" class="form-label">Thumbnail
-													Img</label> <input name="newThumbnail" type="file"
-													class="form-control mb-3" id="exampleFormControlInput1">
-
-												<input name="oldThumbnail" type="hidden"
-													class="form-control mb-3" id="exampleFormControlInput1"
-													value="${videos.thumbnail }"> <label
-													for="exampleFormControlInput1" class="form-label">Video's
-													Link</label> <input name="linkVideo" type="text"
-													class="form-control mb-3" id="exampleFormControlInput1"
-													value="${videos.linkVideo }"> <label
-													for="exampleFormControlInput1" class="form-label">Description</label>
-
-												<textarea class="form-control mb-3" name="descrip" cols="15">${videos.descrip }</textarea>
-
-												<button type="submit" class="btn-success"
-													style="margin-top: 20px; padding: 5px; border-radius: 5px; width: 4rem">Save</button>
-												<button type="reset" class="btn-danger"
-													style="margin-top: 20px; padding: 5px; border-radius: 5px; width: 4rem">Cancel</button>
-											</div>
-										</form>
-									</div>
-								</div>
-							</div>
-
+						
+						
+							 
+							 
 							<div class="d-flex justify-content-end text-center py-1">
 								<div>
 									<p class="mb-1 h5">${videos.views }</p>
@@ -110,6 +69,10 @@
 								</div>
 							</div>
 						</div>
+						<div class="ratio ratio-16x9">
+								<iframe src="${videos.linkVideo }" title="YouTube video"
+									allowfullscreen></iframe>
+							</div>
 						<div class="card-body p-4 text-black">
 							<div class="mb-5">
 								<p class="lead fw-normal mb-1">Detail</p>
@@ -144,16 +107,9 @@
 
 								</div>
 							</div>
-							<div
-								class="d-flex justify-content-between align-items-center mb-4">
-								<p class="lead fw-normal mb-0">Live Video</p>
-
-							</div>
+							
 							<%--Ratio Here --%>
-							<div class="ratio ratio-16x9">
-								<iframe src="${videos.linkVideo }" title="YouTube video"
-									allowfullscreen></iframe>
-							</div>
+							
 						</div>
 					</div>
 				</div>

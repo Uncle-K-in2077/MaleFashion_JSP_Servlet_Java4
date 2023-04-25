@@ -16,22 +16,15 @@ import com.mff.entities.Likes;
 import com.mff.util.HibernateUtil;
 
 /**
- * Servlet implementation class LikedByUser
+ * Servlet implementation class CheckLikeByUserServlet
  */
-@WebServlet("/LikedByUser")
-public class LikedByUser extends HttpServlet {
+@WebServlet("/CheckLikeByUserServlet")
+public class CheckLikeByUserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public LikedByUser() {
-		super();
-	}
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		Session ss = HibernateUtil.getSessionFactory().openSession();
 		ss.beginTransaction();
 
@@ -44,7 +37,7 @@ public class LikedByUser extends HttpServlet {
 		ss.close();
 
 		request.setAttribute("likeList", likeList);
-		request.getRequestDispatcher("./LikedVideosbyUser.jsp").forward(request, response);
+		request.getRequestDispatcher("./include/Blogs.jsp").forward(request, response);
 	}
 
 }

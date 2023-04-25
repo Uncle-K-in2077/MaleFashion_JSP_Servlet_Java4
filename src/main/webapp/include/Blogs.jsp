@@ -71,15 +71,13 @@
 								<h5>${videos.title }</h5>
 								<a href="./videos/detail?id=${videos.id }"
 									style="text-decoration: none">See More</a>
-								<a href="./addlike?idvd=${videos.id }" style="text-decoration: none">
+								<a href="./addlike?idvd=${videos.id }" style="text-decoration: none; margin-left: 140px;">
 									<button
-										style="margin-left: 140px; border: none; background-color: white;">
+										style=" border: none; background-color: white;">
 										<img src="img/icon/heart.png" alt="">
 									</button>
 								</a>
-								<button style="border: none; background-color: white;">
-									<img src="img/icon/compare.png" alt="">
-								</button>
+								
 							</div>
 						</div>
 					</div>
@@ -103,6 +101,9 @@
 			</c:choose>
 
 			<%-- oanh khung --%>
+			
+			
+			
 			<c:forEach var="videos"
 				items="${f:getVideosPagination(page, limit) }">
 				<div class="col-lg-4 col-md-6 col-sm-6">
@@ -113,20 +114,44 @@
 						<div class="blog__item__text">
 							<span><img src="img/icon/calendar.png" alt=""> 27
 								February 2001</span>
-							<h5>${videos.title }</h5>
+							<h5>${videos.title } </h5>
 							<a href="./videos/detail?id=${videos.id }"
 								style="text-decoration: none">See More</a>
-							
-							<a href="./addlike?idvd=${videos.id }" style="text-decoration: none">
+
+							<!-- Check Start -->	
+							<%-- 							
+							<c:forEach var="liked" items="${likeList }">
+								<h1>asdasdasdbna: ${likeList.getVideos().getId() }</h1>
+								<c:if test="${liked.getVideos().getId() == videos.id}">
+									<a href="./addlike?idvd=${videos.id }" style="text-decoration: none">
+										<button
+											style="margin-left: 140px; border: none; background-color: white;">
+											Đã like
+										</button>
+									</a>
+								</c:if> 
+								<c:if test="${liked.getVideos().getId() != videos.id}">
+									<a href="./addlike?idvd=${videos.id }" style="text-decoration: none">
+										<button
+											style="margin-left: 140px; border: none; background-color: white;">
+											Chưa Like
+											<img src="img/icon/heart.png" alt="">
+										</button>
+									</a>
+								</c:if>
+							</c:forEach>
+							--%>
+							<!-- Check End -->
+							 
 							<button
-								style="margin-left: 140px; border: none; background-color: white;">
+								style=" border: none; background-color: white;">
+							<a href="./addlike?idvd=${videos.id }" style="text-decoration: none; margin-left: 140px;">
 								<img src="img/icon/heart.png" alt="">
-							</button>
 							</a>
-							
-							<button style="border: none; background-color: white;">
-								<img src="img/icon/compare.png" alt="">
 							</button>
+							
+							
+							
 						</div>
 					</div>
 				</div>

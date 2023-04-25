@@ -67,15 +67,13 @@
 									<a href="./videos/detail?id=${videos.getVideos().getId() }"
 										style="text-decoration: none">See More</a>
 								
-									<a href="./deleteLike?idLike=${ videos.getId()}">
+									<a href="./deleteLike?idLike=${ videos.getId()}" style="margin-left: 140px;">
 										<button onclick="showToast()" data-bs-toggle="tooltip"
 											title="UnLike?"
-											style="margin-left: 140px; border: none; background-color: white; font-size: 24px">
+											style=" border: none; background-color: white; font-size: 24px">
 											❤</button>
 									</a>
-									<button style="border: none; background-color: white;">
-										<img src="img/icon/compare.png" alt="">
-									</button>
+									
 								</div>
 							</div>
 						</div>

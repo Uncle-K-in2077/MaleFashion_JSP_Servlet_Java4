@@ -7,7 +7,6 @@ import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,19 +19,19 @@ import com.mff.DAO.VideosDAO;
 import com.mff.entities.Videos;
 import com.mff.util.HibernateUtil;
 
-@MultipartConfig
-@WebServlet("/videos")
-public class LoadVideosServlet extends HttpServlet {
+/**
+ * Servlet implementation class LoadVideosServlet2
+ */
+@WebServlet("/videoss")
+public class LoadVideosServlet2 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-//	private static final List<Videos> data = VideosDAO.getVideos();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String sortType = request.getParameter("sort");
 		System.out.println(sortType);
 		List<Videos> list = null;
-
-		list = VideosDAO.getVideosSortedByViewAsc();
+		list = VideosDAO.getVideosSortedByViewDesc();
 
 		request.setAttribute("listVideos", list);
 		request.getRequestDispatcher("VideosManagement.jsp").forward(request, response);

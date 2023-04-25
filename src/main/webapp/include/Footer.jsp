@@ -1,7 +1,11 @@
 
 <!-- Footer Section Begin -->
-<div style="position: fixed; top: 87%;  right: 3%;">
-	<button onclick="scrollToTop()" class="primary">OnTop</button>
+<div
+	style="position: fixed; top: 87%; right: 1.5%; border: none; background-color: transparent;">
+	<button onclick="scrollToTop()" class="primary" style="border: none; background-color: transparent;">
+		<img
+			src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAXxJREFUSEvt101OwkAUAOD3JlbrDjYmZSM3sEeAG3gDYSPpTjYmPUETN7hrcAPcwBvIEfAE4oYmbmTZBDPPTGFIHTqkcSa2C7t+fd+86fy8IlT0YEUu1Av+nIwa6WZzZWM2XMd5bfaHazXXQcVJHPWI4cQGKnMgp74XhNN8zh9wEkdtYvhmE5W5zk/PmvnKVbhDDF+2wThEzhcmgyDGfAAaZdk4db0gnO9nIZ84iaM9rAb+ZgDH8mkrri388fTgi1m4uL3Xfg7rFQt0QzxbCw6yrg63CksUARoCJoC1DrcGq6hccDrcCnyI0my37W50lRvDRWhrEPYEuBpHUwAsxI3gY6icah1uBK/G0RIAL7cIzWSl6oGSxwHovTUI20awqPiL+ByAnnWoUvn1CbKO2GJGsEgqLg8vCJdljs18rDFcBiyK+YfrfS0CwR0yZtYIcO4DwmOZRqCa1me3df6+2ZNbImtv0zS76E0f13UXpdpbU6js+/X6kyg7apO4b5f7ti5Z9/TWAAAAAElFTkSuQmCC" />
+	</button>
 </div>
 <script>
 	function scrollToTop() {
@@ -67,7 +71,7 @@
 				<div class="footer__copyright__text">
 					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 					<p>
-						Copyright ©
+						Copyright Â©
 						<script>
 							document.write(new Date().getFullYear());
 						</script>

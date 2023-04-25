@@ -2,6 +2,7 @@ package com.mff.DAO;
 
 import java.util.List;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
@@ -32,6 +33,75 @@ public class VideosDAO {
 	public static List<Videos> getVideos() {
 		try (Session session = (Session) HibernateUtil.getSessionFactory().openSession()) {
 			return session.createQuery("select videos from Videos as videos", Videos.class).list();
+		}
+	}
+
+	// ASC sort
+	public static List<Videos> getVideosSortedByViewAsc() {
+		try (Session session = (Session) HibernateUtil.getSessionFactory().openSession()) {
+			return session.createQuery("select videos from Videos as videos ORDER BY videos.views ASC", Videos.class)
+					.list();
+		}
+	}
+
+	// DESC sort
+	public static List<Videos> getVideosSortedByViewDesc() {
+		try (Session session = (Session) HibernateUtil.getSessionFactory().openSession()) {
+			return session.createQuery("select videos from Videos as videos ORDER BY videos.views DESC", Videos.class)
+					.list();
+		}
+	}
+
+	// AddLike
+	public void increaseLikes(int videoId) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Transaction ss = null;
+		try {
+			ss = session.beginTransaction();
+			Videos video = session.get(Videos.class, videoId);
+			if (video != null) {
+				int currentLikes = video.getLikes() != null ? video.getLikes() : 0;
+				video.setLikes(currentLikes + 1);
+				session.update(video);
+			}
+			ss.commit();
+		} catch (HibernateException e) {
+			if (ss != null) {
+				ss.rollback();
+			}
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+	}
+
+	// DeleteLike
+	public void decreaseLikeCount(int videoId) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Transaction ss = null;
+		try {
+			ss = session.beginTransaction();
+
+			// Lấy thông tin video từ database
+			Videos video = (Videos) session.get(Videos.class, videoId);
+
+			// Lấy số lượt thích hiện tại
+			int currentLikes = video.getLikes();
+			System.out.println("current like is : " + currentLikes);
+
+			// Giảm số lượt thích
+			if (currentLikes > 0) {
+				video.setLikes(currentLikes - 1);
+			}
+
+			session.update(video);
+			ss.commit();
+		} catch (HibernateException e) {
+			if (ss != null)
+				ss.rollback();
+			e.printStackTrace();
+		} finally {
+			session.close();
 		}
 	}
 

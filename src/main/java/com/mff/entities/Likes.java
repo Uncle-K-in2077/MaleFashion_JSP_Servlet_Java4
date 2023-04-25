@@ -1,5 +1,5 @@
 package com.mff.entities;
-// Generated Apr 22, 2023, 4:53:09 PM by Hibernate Tools 4.3.6.Final
+// Generated Apr 23, 2023, 3:32:52 PM by Hibernate Tools 4.3.6.Final
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -23,8 +23,6 @@ public class Likes implements java.io.Serializable {
 	private User user;
 	private Videos videos;
 
-//	jdbc: id -> obj
-//	orm : -> obj
 	public Likes() {
 	}
 

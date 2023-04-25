@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.mff.DAO.LikesDAO;
+import com.mff.DAO.VideosDAO;
 import com.mff.entities.Likes;
 
 /**
@@ -31,7 +32,13 @@ public class DeleteLikeServlet extends HttpServlet {
 			LikesDAO likeDAO = new LikesDAO();
 			Likes like = likeDAO.getLikeById(likeId);
 			if (like != null) {
+				int idVideo = like.getVideos().getId();
+
+				VideosDAO videosDAO = new VideosDAO();
+				videosDAO.decreaseLikeCount(idVideo);
+
 				likeDAO.removeLike(like);
+
 			}
 			response.sendRedirect(request.getContextPath() + "/LikedByUser?id=" + idUser);
 		} catch (Exception e) {

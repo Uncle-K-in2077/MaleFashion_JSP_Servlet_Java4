@@ -48,23 +48,13 @@
 							</c:if>
 						</td>
 						<td>
-							<div class="buttonGroup">
-								<a href=""
-									style="text-decoration: none; color: white;">
-									<button class="btn-warning"
-										style="width: 48%; padding: 5px; border-radius: 5px; width: 4rem">Detail</button>
-								</a> <a href=""
-									style="text-decoration: none; color: white;">
-									<button class="btn-danger"
-										style="width: 48%; padding: 5px; border-radius: 5px; width: 4rem">Delete</button>
-								</a>
-							</div>
+							<p style="color: #E69988; font-weight: bold;">Developing</p>
 						</td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
-		<%@include file="include/Footer.jsp"%>
 	</div>
+		<%@include file="include/Footer.jsp"%>
 </body>
 </html>

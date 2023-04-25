@@ -1,7 +1,9 @@
 package com.mff.servlet;
 
 import java.io.IOException;
+import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -38,13 +40,24 @@ public class AddLike extends HttpServlet {
 
 			if (idUser != null) {
 				int userId = idUser.intValue();
-				System.out.println("user: " + userId);
+				System.out.println("user is : " + userId);
 			} else {
-				System.out.println("idUser is null");
+				response.sendRedirect("./login.jsp");
+				return;
 			}
 
 			int idVideo = Integer.parseInt(request.getParameter("idvd"));
 			System.out.println("video: " + idVideo);
+
+			// check
+			List<Likes> LikeList = LikesDAO.getLikes();
+			for (Likes likes : LikeList) {
+				if (likes.getUser().getId().equals(idUser) && likes.getVideos().getId().equals(idVideo)) {
+					showNotify(request, response, "You liked this video already!");
+					return;
+				}
+			}
+
 			// get User
 			UserDAO userDAO = new UserDAO();
 			User user = userDAO.findById(idUser);
@@ -53,15 +66,29 @@ public class AddLike extends HttpServlet {
 			VideosDAO videoDAO = new VideosDAO();
 			Videos vd = videoDAO.findById(idVideo);
 
+			// add like
 			Likes likes = new Likes(user, vd);
-
 			LikesDAO likeDAO = new LikesDAO();
 			likeDAO.addLike(likes);
+
+			videoDAO.increaseLikes(idVideo);
+//			int likeCount = likes.getVideos().getLikes();
+//			System.out.println("like + 1 = : " + likeCount);
+//			vd.setLikes(vd.getLikes() + 1);
+//			videoDAO.update(vd);
+
 			response.sendRedirect(request.getContextPath() + "/home.jsp");
 		} catch (Exception e) {
-			System.out.println("Lỗi: " + e.getMessage());
+			System.out.println("Lỗi Add Like = : " + e.getMessage());
 		}
 
+	}
+
+	private void showNotify(HttpServletRequest request, HttpServletResponse response, String message)
+			throws ServletException, IOException {
+		request.setAttribute("notify", message);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("home.jsp");
+		dispatcher.forward(request, response);
 	}
 
 }

@@ -3,7 +3,6 @@ package com.mff.servlet;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -13,9 +12,11 @@ import javax.servlet.http.HttpSession;
 import com.mff.DAO.VideosDAO;
 import com.mff.entities.Videos;
 
-@MultipartConfig
-@WebServlet("/videos/detail")
-public class DetailVideoServlet extends HttpServlet {
+/**
+ * Servlet implementation class DetailVideoAdminServlet
+ */
+@WebServlet("/videosAdmin/detail")
+public class DetailVideoAdminServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -33,7 +34,7 @@ public class DetailVideoServlet extends HttpServlet {
 		Videos vd = VideosDAO.findById(id);
 		System.out.println(vd.toString());
 		request.setAttribute("videos", vd);
-		request.getRequestDispatcher("../VideoDetailUser.jsp").forward(request, response);
+		request.getRequestDispatcher("../VideoDetail.jsp").forward(request, response);
 	}
 
 }

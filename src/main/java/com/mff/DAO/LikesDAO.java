@@ -16,6 +16,7 @@ public class LikesDAO {
 			transaction = session.beginTransaction();
 			session.save(like);
 			transaction.commit();
+
 		} catch (Exception e) {
 			if (transaction != null) {
 				transaction.rollback();
@@ -63,6 +64,7 @@ public class LikesDAO {
 	public static List<Likes> getLikes() {
 		try (Session session = (Session) HibernateUtil.getSessionFactory().openSession()) {
 			return session.createQuery("select likes from Likes as likes", Likes.class).list();
+
 		}
 	}
 
